@@ -4,13 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel de Crafting Prisma</title>
+    <link rel="icon" type="image/png" href="https://i.postimg.cc/7h6krvDT/icon-prism.png">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
+    <div id="loading-screen" class="loading-screen hidden">
+        <img src="https://i.postimg.cc/7h6krvDT/icon-prism.png" alt="Logo Prisma" class="logo-img">
+        <div class="loading-spinner"></div>
+        <p class="loading-text">Carregando...</p>
+    </div>
+
     <main id="main-page">
-        <h1>Sistema de Crafting</h1>
+        <div class="logo-header">
+            <img src="https://i.postimg.cc/7h6krvDT/icon-prism.png" alt="Logo Prisma" class="logo-img">
+            <h1>Sistema de Crafting</h1>
+        </div>
         
         <h2 class="section-title">Itens Craft Racing</h2>
         <div id="items-grid-primary" class="grid"></div>

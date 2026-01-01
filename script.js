@@ -6,6 +6,24 @@ document.addEventListener("DOMContentLoaded", () => {
     const ingredientsStage = document.getElementById("ingredients-stage");
     const resultStage = document.getElementById("result-stage");
     const backBtn = document.getElementById("back-btn");
+    const loadingScreen = document.getElementById("loading-screen");
+
+    function showLoading() {
+        if (loadingScreen) {
+            loadingScreen.classList.remove("hidden");
+        }
+    }
+
+    // Esconde o loading quando a página carregar
+    if (loadingScreen && !loadingScreen.classList.contains("hidden")) {
+        window.addEventListener("load", () => {
+            setTimeout(() => {
+                if (loadingScreen) {
+                    loadingScreen.classList.add("hidden");
+                }
+            }, 300);
+        });
+    }
 
     fetch('items.json')
         .then(res => res.json())
@@ -51,7 +69,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 card.addEventListener("click", () => {
                     if (craftItem.redirect) {
                         // Se houver um link de redirecionamento no JSON, ele vai para a página
-                        window.location.href = craftItem.redirect;
+                        showLoading();
+                        setTimeout(() => {
+                            window.location.href = craftItem.redirect;
+                        }, 600);
                     } else {
                         // Se não houver, ele faz a animação de craft na mesma página
                         startCrafting(itemData, craftItem.recipe, db, finalQty);
