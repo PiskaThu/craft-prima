@@ -32,12 +32,16 @@
   "craftables": [
     {
       "id": "credential",
+      "category": "primary",
+      "resultQty": 3,
       "recipe": [
         { "item": "papel", "qty": 3}
       ]
     },
     {
       "id": "plate",
+      "category": "primary",
+      "resultQty": 1,
       "recipe": [
         { "item": "ironbar", "qty": 1},
         { "item": "plastic", "qty": 1},
@@ -46,6 +50,8 @@
     },
     {
       "id": "liveryxd",
+      "category": "primary",
+      "resultQty": 1,
       "recipe": [
         { "item": "plastic", "qty": 5},
         { "item": "glass", "qty": 3}
@@ -53,6 +59,8 @@
     },
     {
       "id": "neonrgb",
+      "category": "primary",
+      "resultQty": 1,
       "recipe": [
         { "item": "LED", "qty": 1},
         { "item": "copper", "qty": 2}
@@ -60,6 +68,8 @@
     },
     {
       "id": "longbook",
+      "category": "primary",
+      "resultQty": 1,
       "recipe": [
         { "item": "hackdevice", "qty": 1},
         { "item": "rubber", "qty": 5},
@@ -71,6 +81,8 @@
     },
     {
       "id": "xenonrgb",
+      "category": "primary",
+      "resultQty": 1,
       "recipe": [
         { "item": "LED", "qty": 1},
         { "item": "copper", "qty": 2}
@@ -78,12 +90,16 @@
     },
     {
       "id": "panoxd",
+      "category": "primary",
+      "resultQty": 1,
       "recipe": [
         { "item": "trapo", "qty": 5}
       ]
     },
     {
       "id": "kitdrift",
+      "category": "primary",
+      "resultQty": 1,
       "recipe": [
         { "item": "ironbar", "qty": 1},
         { "item": "rubber", "qty": 5}
@@ -91,24 +107,32 @@
     },
         {
       "id": "sprayxd",
+      "category": "primary",
+      "resultQty": 1,
       "recipe": [
         { "item": "emptybottles", "qty": 1}
       ]
     },
         {
       "id": "sprayxd2",
+      "category": "primary",
+      "resultQty": 1,
       "recipe": [
         { "item": "emptybottles", "qty": 1}
       ]
     },
         {
       "id": "sprayxd3",
+      "category": "primary",
+      "resultQty": 1,
       "recipe": [
         { "item": "emptybottles", "qty": 1}
       ]
     },
         {
       "id": "sprayxd4",
+      "category": "primary",
+      "resultQty": 1,
       "recipe": [
         { "item": "emptybottles", "qty": 1}
       ]

@@ -1,12 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const itemsGrid = document.getElementById("items-grid");
     const mainPage = document.getElementById("main-page");
     const craftPage = document.getElementById("craft-page");
     const ingredientsStage = document.getElementById("ingredients-stage");
     const resultStage = document.getElementById("result-stage");
     const backBtn = document.getElementById("back-btn");
 
-    // 1. Carrega o JSON
     fetch('items.json')
         .then(res => res.json())
         .then(data => {
@@ -16,19 +14,19 @@ document.addEventListener("DOMContentLoaded", () => {
                 const itemData = db[craftItem.id];
                 if (!itemData) return;
 
+                const finalQty = craftItem.resultQty || 1;
                 const card = document.createElement("div");
                 card.classList.add("item-card");
                 
                 card.innerHTML = `
-                    <img src="${itemData.image}" alt="${itemData.name}">
-                    <h3>${itemData.name}</h3>
+                    <img src="${itemData.image}">
+                    <h3>${itemData.name} ${finalQty > 1 ? 'x'+finalQty : ''}</h3>
                     <div class="tooltip">
-                        <div style="font-size: 10px; color: var(--accent-green); margin-bottom: 12px; border-bottom: 1px solid #30363d; padding-bottom: 5px; text-transform: uppercase; font-weight: bold;">Componentes Requeridos</div>
+                        <div style="font-size: 10px; color: var(--accent-green); margin-bottom: 12px; border-bottom: 1px solid #30363d; padding-bottom: 5px; text-transform: uppercase; font-weight: bold;">Componentes</div>
                         <div id="recipe-${craftItem.id}"></div>
                     </div>
                 `;
 
-                // Monta a lista de componentes no Tooltip
                 const recipeContainer = card.querySelector(`#recipe-${craftItem.id}`);
                 craftItem.recipe.forEach(ing => {
                     const ingData = db[ing.item];
@@ -46,21 +44,23 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                 });
 
-                // Clique para fabricar
-                card.addEventListener("click", () => startCrafting(itemData, craftItem.recipe, db));
-                itemsGrid.appendChild(card);
+                card.addEventListener("click", () => startCrafting(itemData, craftItem.recipe, db, finalQty));
+
+                // Lógica de separação por categoria
+                if (craftItem.category === "secondary") {
+                    document.getElementById("items-grid-secondary").appendChild(card);
+                } else {
+                    document.getElementById("items-grid-primary").appendChild(card);
+                }
             });
         });
 
-    // 2. Lógica da Animação
-    function startCrafting(finalItem, recipe, db) {
+    function startCrafting(finalItem, recipe, db, finalQty) {
         mainPage.classList.add("hidden");
         craftPage.classList.remove("hidden");
-        
         ingredientsStage.innerHTML = "";
         resultStage.classList.add("hidden");
 
-        // Cria os ingredientes "voando" para o centro
         recipe.forEach((ing, index) => {
             const ingData = db[ing.item];
             const img = document.createElement("img");
@@ -70,23 +70,18 @@ document.addEventListener("DOMContentLoaded", () => {
             ingredientsStage.appendChild(img);
         });
 
-        // Mostra o resultado final após a fusão
         setTimeout(() => {
-            const finalImg = document.getElementById("final-img");
-            const finalName = document.getElementById("final-name");
-            
-            finalImg.src = finalItem.image;
-            finalName.innerHTML = `<span style="color: var(--text-dim); font-size: 14px;">ITEM OBTIDO</span><br>${finalItem.name.toUpperCase()}`;
-            
+            document.getElementById("final-img").src = finalItem.image;
+            document.getElementById("final-name").innerHTML = `
+                <span style="color: var(--text-dim); font-size: 14px;">PRODUÇÃO CONCLUÍDA</span><br>
+                ${finalQty}x ${finalItem.name.toUpperCase()}
+            `;
             resultStage.classList.remove("hidden");
         }, 2200);
     }
 
-    // 3. Botão de Voltar
     backBtn.onclick = () => {
         craftPage.classList.add("hidden");
         mainPage.classList.remove("hidden");
-        // Limpa o palco para a próxima vez
-        resultStage.classList.add("hidden");
     };
 });

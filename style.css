@@ -18,6 +18,18 @@ body {
     align-items: center;
 }
 
+.section-title {
+    width: 100%;
+    text-align: left;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-dim);
+    border-left: 4px solid var(--accent-green);
+    padding-left: 15px;
+    margin-bottom: 25px;
+}
+
 .hidden { display: none !important; }
 
 /* --- PÁGINA PRINCIPAL --- */
