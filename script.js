@@ -4,16 +4,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const craftPage = document.getElementById("craft-page");
     const ingredientsStage = document.getElementById("ingredients-stage");
     const resultStage = document.getElementById("result-stage");
+    const backBtn = document.getElementById("back-btn");
 
     fetch('items.json')
         .then(res => res.json())
         .then(data => {
-            const db = data.database; // Onde estão as fotos e nomes reais
+            const db = data.database;
 
             data.craftables.forEach(craftItem => {
-                // Busca os dados do item final no banco de dados
                 const itemData = db[craftItem.id];
-                
+                if (!itemData) return;
+
                 const card = document.createElement("div");
                 card.classList.add("item-card");
                 
@@ -21,24 +22,26 @@ document.addEventListener("DOMContentLoaded", () => {
                     <img src="${itemData.image}">
                     <h3>${itemData.name}</h3>
                     <div class="tooltip">
-                        <div style="font-size: 11px; color: var(--accent-green); margin-bottom: 10px; border-bottom: 1px solid">RECURSOS</div>
+                        <div style="font-size: 10px; color: var(--accent-green); margin-bottom: 8px; border-bottom: 1px solid #30363d; padding-bottom: 5px; text-transform: uppercase;">Componentes</div>
                         <div id="recipe-${craftItem.id}"></div>
                     </div>
                 `;
 
                 const recipeContainer = card.querySelector(`#recipe-${craftItem.id}`);
-                
-                // Monta a receita buscando os dados de cada ingrediente no db
                 craftItem.recipe.forEach(ing => {
-                    const ingData = db[ing.item]; // Busca foto/nome pelo ID (ex: "ferro")
-                    const row = document.createElement("div");
-                    row.classList.add("recipe-row");
-                    row.innerHTML = `
-                        <img src="${ingData.image}">
-                        <span>${ingData.name}</span>
-                        <span style="color: var(--accent-green)">${ing.qty}x</span>
-                    `;
-                    recipeContainer.appendChild(row);
+                    const ingData = db[ing.item];
+                    if (ingData) {
+                        const row = document.createElement("div");
+                        row.classList.add("recipe-row");
+                        row.innerHTML = `
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <img src="${ingData.image}" style="width: 24px; height: 24px; object-fit: contain;">
+                                <span>${ingData.name}</span>
+                            </div>
+                            <span style="color: var(--accent-green)">${ing.qty}x</span>
+                        `;
+                        recipeContainer.appendChild(row);
+                    }
                 });
 
                 card.addEventListener("click", () => startCrafting(itemData, craftItem.recipe, db));
@@ -49,7 +52,6 @@ document.addEventListener("DOMContentLoaded", () => {
     function startCrafting(finalItem, recipe, db) {
         mainPage.classList.add("hidden");
         craftPage.classList.remove("hidden");
-        
         ingredientsStage.innerHTML = "";
         resultStage.classList.add("hidden");
 
@@ -64,12 +66,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
         setTimeout(() => {
             document.getElementById("final-img").src = finalItem.image;
-            document.getElementById("final-name").innerText = finalItem.name + " CRIADO!";
+            document.getElementById("final-name").innerText = finalItem.name + " CRIADO";
             resultStage.classList.remove("hidden");
         }, 2200);
     }
 
-    document.getElementById("back-btn").onclick = () => {
+    backBtn.onclick = () => {
         craftPage.classList.add("hidden");
         mainPage.classList.remove("hidden");
     };

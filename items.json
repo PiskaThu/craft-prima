@@ -1,16 +1,45 @@
 {
   "database": {
-    "ferro": { "name": "Barra de Ferro", "image": "link_da_foto_ferro.png" },
-    "fogo": { "name": "Pó de Chama", "image": "link_da_foto_fogo.png" },
-    "madeira": { "name": "Madeira", "image": "link_da_foto_madeira.png" },
-    "espada_fogo": { "name": "Espada de Fogo", "image": "link_da_foto_espada.png" }
+    "aluminum": { "name": "Alumínio", "image": "https://i.postimg.cc/06xdwT3d/aluminum.png" },
+    "battery": { "name": "Pilha", "image": "https://i.postimg.cc/WDj6kBK7/battery.png" },
+    "chipprocess": { "name": "Chip Processador", "image": "https://i.postimg.cc/sBy9hk8c/chipprocess.png" },
+    "copper": { "name": "Cobre", "image": "https://i.postimg.cc/2qmFZsJ7/copper.png" },
+    "credential": { "name": "Credencial", "image": "https://i.postimg.cc/94Vt76Sb/credential.png" },
+    "emptybottles": { "name": "Garrafa Vazia", "image": "https://i.postimg.cc/JymckfgT/emptybottles.png" },
+    "glass": { "name": "Vidro", "image": "https://i.postimg.cc/gwdqZC5N/glass.png" },
+    "hackdevice": { "name": "Placa Eletrônica", "image": "https://i.postimg.cc/gwdqZC5S/hackdevice.png" },
+    "hd": { "name": "HD Sata", "image": "https://i.postimg.cc/qt0X3PYY/hd.png" },
+    "ironbar": { "name": "Barra de Ferro", "image": "https://i.postimg.cc/f3Zj9Gp4/ironbar.png" },
+    "kitdrift": { "name": "Kit Drift", "image": "https://i.postimg.cc/hJgbdkwN/kitdrift.png" },
+    "liveryxd": { "name": "Plotagem", "image": "https://i.postimg.cc/d7vmybXz/liveryxd.png" },
+    "longbook": { "name": "Longbook", "image": "https://i.postimg.cc/wtV5cW84/longbook.png" },
+    "neonrgb": { "name": "Neon", "image": "https://i.postimg.cc/8FHdByQY/neonrgb.png" },
+    "panoxd": { "name": "Pano de Limpeza", "image": "https://i.postimg.cc/8FHdByQ3/panoxd.png" },
+    "papel": { "name": "Papel", "image": "https://i.postimg.cc/1gH0cWhL/papel.png" },
+    "plastic": { "name": "Plástico", "image": "https://i.postimg.cc/Ny487Nvh/plastic.png" },
+    "plate": { "name": "Placa", "image": "https://i.postimg.cc/2qwdFHNf/plate.png" },
+    "rubber": { "name": "Borracha", "image": "https://i.postimg.cc/KKN7r9h2/rubber.png" },
+    "screen": { "name": "Tela LCD", "image": "https://i.postimg.cc/v1z7LPwy/screen.png" },
+    "screw": { "name": "Parafuso", "image": "https://i.postimg.cc/GBQPJMnc/screw.png" },
+    "sprayxd": { "name": "Spray", "image": "https://i.postimg.cc/yJPhXfC1/sprayxd.png" },
+    "trapo": { "name": "Trapo", "image": "https://i.postimg.cc/1gH0cW15/trapo.png" },
+    "xenonrgb": { "name": "Xênon", "image": "https://i.postimg.cc/bG8Ht7M1/xenonrgb.png" }
   },
   "craftables": [
     {
-      "id": "espada_fogo",
+      "id": "hackdevice",
       "recipe": [
-        { "item": "ferro", "qty": 2 },
-        { "item": "fogo", "qty": 1 }
+        { "item": "chipprocess", "qty": 1 },
+        { "item": "copper", "qty": 2 },
+        { "item": "plastic", "qty": 1 }
+      ]
+    },
+    {
+      "id": "kitdrift",
+      "recipe": [
+        { "item": "ironbar", "qty": 4 },
+        { "item": "rubber", "qty": 2 },
+        { "item": "screw", "qty": 10 }
       ]
     }
   ]
