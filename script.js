@@ -30,15 +30,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
             `;
 
-            // Preencher o Tooltip com os ingredientes
             const recipeContainer = card.querySelector(`#recipe-${item.id}`);
             item.recipe.forEach(ing => {
                 const row = document.createElement("div");
                 row.classList.add("recipe-row");
-                // Formato: [Imagem] Nome xQuantidade
+                // Formato: [Imagem] | Nome | xQuantidade
                 row.innerHTML = `
                     <img src="${ing.image}">
-                    <span>${ing.name} <strong>x${ing.qty}</strong></span>
+                    <span>${ing.name}</span>
+                    <span style="color: var(--accent-green)">${ing.qty}x</span>
                 `;
                 recipeContainer.appendChild(row);
             });
