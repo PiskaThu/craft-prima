@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Longbook Factory v3.1</title>
+    <style>
+        :root {
+            --accent-green: #00ff9d;
+            --primary-cyan: #00f2ff;
+            --bg-color: #0d0f14;
+            --card-bg: #161b22;
+            --input-bg: #1c2128;
+            --text-main: #ffffff;
+            --text-dim: #8b949e;
+            --border-glow: rgba(0, 255, 157, 0.4);
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .calc-container {
+            width: 100%;
+            max-width: 800px;
+            background: var(--card-bg);
+            border: 1px solid #30363d;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        h2 { 
+            text-align: center; 
+            color: var(--primary-cyan); 
+            letter-spacing: 4px; 
+            margin: 0;
+            text-shadow: 0 0 15px rgba(0, 242, 255, 0.4);
+            text-transform: uppercase;
+        }
+        
+        .subtitle { 
+            text-align: center; 
+            font-size: 10px; 
+            color: var(--text-dim); 
+            margin-bottom: 30px; 
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .goal-section {
+            background: linear-gradient(90deg, rgba(0, 242, 255, 0.1), rgba(112, 0, 255, 0.1));
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border: 1px solid rgba(0, 242, 255, 0.2);
+        }
+
+        .goal-section label { 
+            font-size: 12px; 
+            font-weight: bold; 
+            color: var(--primary-cyan); 
+            flex-shrink: 0; 
+            text-transform: uppercase;
+        }
+
+        .goal-section input { 
+            flex: 1; 
+            background: rgba(0,0,0,0.3); 
+            border: 1px solid rgba(0, 242, 255, 0.3);
+            border-radius: 8px;
+            padding: 12px;
+            color: white;
+            font-size: 16px;
+        }
+
+        .input-grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 20px; 
+        }
+
+        .input-group { display: flex; flex-direction: column; gap: 8px; }
+        
+        label { 
+            font-size: 11px; 
+            color: var(--primary-cyan); 
+            text-transform: uppercase; 
+            font-weight: bold; 
+            letter-spacing: 1px;
+        }
+
+        input {
+            background: var(--input-bg);
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 12px;
+            color: white;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            border-color: var(--accent-green);
+            outline: none;
+            box-shadow: 0 0 10px var(--border-glow);
+        }
+
+        /* --- GRUPO DE BOTÕES TRIPLO --- */
+        .btn-group-triple { 
+            display: grid; 
+            grid-template-columns: 1.5fr 1fr 1fr; 
+            gap: 15px; 
+            margin-top: 30px; 
+        }
+        
+        /* Estilo Base para os Botões de Ação (Processar e Voltar) */
+        .btn-action {
+            color: #252525; 
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-size: 12px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        /* Botão Processar (Roxo para Ciano) */
+        .btn-calc { 
+            background: linear-gradient(45deg, #7000ff, var(--primary-cyan)); 
+        }
+
+        /* Botão Voltar (Verde Neon) */
+        .btn-back-center { 
+            background: var(--accent-green);
+            color: #252525; /* Texto preto para melhor leitura no verde brilhante */
+        }
+
+        /* Efeito de Brilho no Hover para ambos */
+        .btn-action:hover {
+            filter: brightness(1.2);
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px var(--border-glow);
+        }
+
+        .btn-clear { 
+            background: #21262d; 
+            color: var(--text-dim); 
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 12px;
+            transition: 0.3s;
+        }
+
+        .btn-clear:hover {
+            background: #30363d;
+            color: #fff;
+        }
+
+        /* --- RESULTADOS --- */
+        .section-title { 
+            font-size: 16px; 
+            color: var(--accent-green); 
+            margin: 40px 0 20px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 20px;
+            background: var(--accent-green);
+            border-radius: 2px;
+        }
+
+        .res-card {
+            background: #1c2128;
+            border-radius: 12px;
+            padding: 10px 20px;
+            margin-bottom: 15px;
+            border: 1px solid #30363d;
+        }
+
+        .res-item { 
+            display: flex; 
+            justify-content: space-between; 
+            padding: 12px 0; 
+            border-bottom: 1px solid rgba(255,255,255,0.05); 
+            font-size: 14px;
+        }
+
+        .res-item:last-child { border-bottom: none; }
+
+        .needed { color: #ff007a !important; font-weight: bold; }
+        .success { color: var(--accent-green); font-weight: bold; }
+        .info-val { color: var(--primary-cyan); font-weight: bold; }
+
+    </style>
+</head>
+<body>
+
+    <div class="calc-container">
+        <h2>Long-Factory</h2>
+        <p class="subtitle">System Version 3.1 - Resource Splitter</p>
+
+        <div class="goal-section">
+            <label>🎯 Quantos Longbooks planeja?</label>
+            <input type="number" id="meta" placeholder="Deixe vazio para Máximo" oninput="calcular()">
+        </div>
+
+        <div class="input-grid">
+            <div class="input-group"><label>Borracha</label><input type="number" id="bor" placeholder="0" oninput="calcular()"></div>
+            <div class="input-group"><label>Lixo Eletr.</label><input type="number" id="lixo" placeholder="0" oninput="calcular()"></div>
+            <div class="input-group"><label>Pilhas</label><input type="number" id="pil" placeholder="0" oninput="calcular()"></div>
+            <div class="input-group"><label>Plástico</label><input type="number" id="plas" placeholder="0" oninput="calcular()"></div>
+            <div class="input-group"><label>Alumínio</label><input type="number" id="alum" placeholder="0" oninput="calcular()"></div>
+            <div class="input-group"><label>Vidro</label><input type="number" id="vid" placeholder="0" oninput="calcular()"></div>
+        </div>
+
+        <div class="btn-group-triple">
+            <button class="btn-action btn-calc" onclick="calcular()">Processar Dados</button>
+            
+            <button class="btn-clear" onclick="limpar()">Reset</button>
+
+            <a href="index.html" class="btn-action btn-back-center">Voltar</a>
+        </div>
+
+        <div id="result" style="display:none">
+            <div class="section-title">📦 Peças para Fabricar</div>
+            <div class="res-card" id="lista-pecas"></div>
+
+            <div class="section-title">🛡️ Reserva Final</div>
+            <div class="res-card" id="reserva-final"></div>
+
+            <div class="section-title">📊 Gasto Total & Saldo</div>
+            <div class="res-card" id="gasto-total"></div>
+        </div>
+    </div>
+
+    <script>
+        function calcular() {
+            const metaInput = parseInt(document.getElementById('meta').value);
+            const inv = {
+                b: parseInt(document.getElementById('bor').value) || 0,
+                l: parseInt(document.getElementById('lixo').value) || 0,
+                p: parseInt(document.getElementById('pil').value) || 0,
+                pl: parseInt(document.getElementById('plas').value) || 0,
+                al: parseInt(document.getElementById('alum').value) || 0,
+                vi: parseInt(document.getElementById('vid').value) || 0
+            };
+
+            const custoTotal = { b: 17, l: 17, p: 3, pl: 4, al: 5, vi: 3 };
+
+            let maxPossivel = Math.min(
+                Math.floor(inv.b / custoTotal.b), Math.floor(inv.l / custoTotal.l),
+                Math.floor(inv.p / custoTotal.p), Math.floor(inv.pl / custoTotal.pl),
+                Math.floor(inv.al / custoTotal.al), Math.floor(inv.vi / custoTotal.vi)
+            );
+
+            let qty = (!isNaN(metaInput) && metaInput > 0) ? metaInput : maxPossivel;
+            if (qty < 0) qty = 0;
+
+            if (qty > 0 || !isNaN(metaInput)) {
+                document.getElementById('result').style.display = 'block';
+            } else {
+                document.getElementById('result').style.display = 'none';
+            }
+
+            document.getElementById('lista-pecas').innerHTML = `
+                <div class="res-item"><span>💾 HD Sata</span><span class="success">${qty}x</span></div>
+                <div class="res-item"><span>📟 Placa Eletrônica</span><span class="success">${qty}x</span></div>
+                <div class="res-item"><span>💻 Processador</span><span class="success">${qty}x</span></div>
+                <div class="res-item"><span>🖥️ Tela LCD</span><span class="success">${qty}x</span></div>
+            `;
+
+            document.getElementById('reserva-final').innerHTML = `
+                <div class="res-item"><span>📦 Borrachas Separadas</span><span class="info-val">${qty * 5}x</span></div>
+                <div class="res-item"><span>🔋 Pilhas Separadas</span><span class="info-val">${qty * 1}x</span></div>
+            `;
+
+            const mats = [
+                {n: 'Borracha', t: 'b'}, {n: 'Lixo Eletr.', t: 'l'}, {n: 'Pilha', t: 'p'},
+                {n: 'Plástico', t: 'pl'}, {n: 'Alumínio', t: 'al'}, {n: 'Vidro', t: 'vi'}
+            ];
+
+            document.getElementById('gasto-total').innerHTML = mats.map(m => {
+                let totalReq = qty * custoTotal[m.t];
+                let saldo = inv[m.t] - totalReq;
+                let statusClass = saldo < 0 ? 'needed' : 'success';
+                let statusTexto = saldo < 0 ? `Faltam ${Math.abs(saldo)}` : `Sobra ${saldo}`;
+                
+                return `
+                    <div class="res-item">
+                        <span>${m.n} <small style="color:#666">(Total: ${totalReq})</small></span>
+                        <span class="${statusClass}">${statusTexto}</span>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function limpar() {
+            document.querySelectorAll('input').forEach(i => i.value = '');
+            document.getElementById('result').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

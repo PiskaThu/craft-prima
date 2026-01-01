@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const itemsGridPrimary = document.getElementById("items-grid-primary");
+    const itemsGridSecondary = document.getElementById("items-grid-secondary");
     const mainPage = document.getElementById("main-page");
     const craftPage = document.getElementById("craft-page");
     const ingredientsStage = document.getElementById("ingredients-stage");
@@ -27,6 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>
                 `;
 
+                // Renderiza a receita no tooltip
                 const recipeContainer = card.querySelector(`#recipe-${craftItem.id}`);
                 craftItem.recipe.forEach(ing => {
                     const ingData = db[ing.item];
@@ -44,13 +47,22 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                 });
 
-                card.addEventListener("click", () => startCrafting(itemData, craftItem.recipe, db, finalQty));
+                // LÓGICA DE CLIQUE CORRIGIDA
+                card.addEventListener("click", () => {
+                    if (craftItem.redirect) {
+                        // Se houver um link de redirecionamento no JSON, ele vai para a página
+                        window.location.href = craftItem.redirect;
+                    } else {
+                        // Se não houver, ele faz a animação de craft na mesma página
+                        startCrafting(itemData, craftItem.recipe, db, finalQty);
+                    }
+                });
 
-                // Lógica de separação por categoria
+                // Organização por categorias
                 if (craftItem.category === "secondary") {
-                    document.getElementById("items-grid-secondary").appendChild(card);
+                    itemsGridSecondary.appendChild(card);
                 } else {
-                    document.getElementById("items-grid-primary").appendChild(card);
+                    itemsGridPrimary.appendChild(card);
                 }
             });
         });

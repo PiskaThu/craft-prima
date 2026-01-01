@@ -1,10 +1,10 @@
 :root {
     --bg-color: #0d0f14;
     --card-bg: #161b22;
-    --accent-green: #00ff9d;
+    --accent-green: #00f2ff;
     --text-main: #ffffff;
     --text-dim: #8b949e;
-    --border-glow: rgba(0, 255, 157, 0.3);
+    --border-glow: rgba(28, 158, 190, 0.3);
 }
 
 body {
@@ -18,17 +18,7 @@ body {
     align-items: center;
 }
 
-.section-title {
-    width: 100%;
-    text-align: left;
-    font-size: 18px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--text-dim);
-    border-left: 4px solid var(--accent-green);
-    padding-left: 15px;
-    margin-bottom: 25px;
-}
+
 
 .hidden { display: none !important; }
 

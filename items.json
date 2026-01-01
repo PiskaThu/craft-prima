@@ -70,6 +70,7 @@
     {
       "id": "longbook",
       "category": "primary",
+      "redirect": "calculadora.html",
       "resultQty": 1,
       "recipe": [
         { "item": "hackdevice", "qty": 1},
