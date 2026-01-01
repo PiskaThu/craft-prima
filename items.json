@@ -4,13 +4,13 @@
     "battery": { "name": "Pilha", "image": "https://i.postimg.cc/WDj6kBK7/battery.png" },
     "chipprocess": { "name": "Chip Processador", "image": "https://i.postimg.cc/sBy9hk8c/chipprocess.png" },
     "copper": { "name": "Cobre", "image": "https://i.postimg.cc/2qmFZsJ7/copper.png" },
-    "credential": { "name": "Credencial", "image": "https://i.postimg.cc/94Vt76Sb/credential.png" },
+    "credential": { "name": "Ticket de corrida", "image": "https://i.postimg.cc/94Vt76Sb/credential.png" },
     "emptybottles": { "name": "Garrafa Vazia", "image": "https://i.postimg.cc/JymckfgT/emptybottles.png" },
     "glass": { "name": "Vidro", "image": "https://i.postimg.cc/gwdqZC5N/glass.png" },
     "hackdevice": { "name": "Placa Eletrônica", "image": "https://i.postimg.cc/gwdqZC5S/hackdevice.png" },
     "hd": { "name": "HD Sata", "image": "https://i.postimg.cc/qt0X3PYY/hd.png" },
     "ironbar": { "name": "Barra de Ferro", "image": "https://i.postimg.cc/f3Zj9Gp4/ironbar.png" },
-    "kitdrift": { "name": "Kit Drift", "image": "https://i.postimg.cc/hJgbdkwN/kitdrift.png" },
+    "kitdrift": { "name": "Suspensão a AR", "image": "https://i.postimg.cc/hJgbdkwN/kitdrift.png" },
     "liveryxd": { "name": "Plotagem", "image": "https://i.postimg.cc/d7vmybXz/liveryxd.png" },
     "longbook": { "name": "Longbook", "image": "https://i.postimg.cc/wtV5cW84/longbook.png" },
     "neonrgb": { "name": "Neon", "image": "https://i.postimg.cc/8FHdByQY/neonrgb.png" },
@@ -21,25 +21,96 @@
     "rubber": { "name": "Borracha", "image": "https://i.postimg.cc/KKN7r9h2/rubber.png" },
     "screen": { "name": "Tela LCD", "image": "https://i.postimg.cc/v1z7LPwy/screen.png" },
     "screw": { "name": "Parafuso", "image": "https://i.postimg.cc/GBQPJMnc/screw.png" },
-    "sprayxd": { "name": "Spray", "image": "https://i.postimg.cc/yJPhXfC1/sprayxd.png" },
+    "sprayxd": { "name": "Spray Cromado", "image": "https://i.postimg.cc/yJPhXfC1/sprayxd.png" },
+    "sprayxd2": { "name": "Spray Metálico", "image": "https://i.postimg.cc/yJPhXfC1/sprayxd.png" },
+    "sprayxd3": { "name": "Spray Metal", "image": "https://i.postimg.cc/yJPhXfC1/sprayxd.png" },
+    "sprayxd4": { "name": "Spray Fosco", "image": "https://i.postimg.cc/yJPhXfC1/sprayxd.png" },
     "trapo": { "name": "Trapo", "image": "https://i.postimg.cc/1gH0cW15/trapo.png" },
-    "xenonrgb": { "name": "Xênon", "image": "https://i.postimg.cc/bG8Ht7M1/xenonrgb.png" }
+    "xenonrgb": { "name": "Xênon", "image": "https://i.postimg.cc/bG8Ht7M1/xenonrgb.png" },
+    "LED": { "name": "LED", "image": "https://i.postimg.cc/q7G9mpBH/led.png" }
   },
   "craftables": [
     {
-      "id": "hackdevice",
+      "id": "credential",
       "recipe": [
-        { "item": "chipprocess", "qty": 1 },
-        { "item": "copper", "qty": 2 },
-        { "item": "plastic", "qty": 1 }
+        { "item": "papel", "qty": 3}
+      ]
+    },
+    {
+      "id": "plate",
+      "recipe": [
+        { "item": "ironbar", "qty": 1},
+        { "item": "plastic", "qty": 1},
+        { "item": "screw", "qty": 5}
+      ]
+    },
+    {
+      "id": "liveryxd",
+      "recipe": [
+        { "item": "plastic", "qty": 5},
+        { "item": "glass", "qty": 3}
+      ]
+    },
+    {
+      "id": "neonrgb",
+      "recipe": [
+        { "item": "LED", "qty": 1},
+        { "item": "copper", "qty": 2}
+      ]
+    },
+    {
+      "id": "longbook",
+      "recipe": [
+        { "item": "hackdevice", "qty": 1},
+        { "item": "rubber", "qty": 5},
+        { "item": "battery", "qty": 1},
+        { "item": "chipprocess", "qty": 1},
+        { "item": "hd", "qty": 1},
+        { "item": "screen", "qty": 1}
+      ]
+    },
+    {
+      "id": "xenonrgb",
+      "recipe": [
+        { "item": "LED", "qty": 1},
+        { "item": "copper", "qty": 2}
+      ]
+    },
+    {
+      "id": "panoxd",
+      "recipe": [
+        { "item": "trapo", "qty": 5}
       ]
     },
     {
       "id": "kitdrift",
       "recipe": [
-        { "item": "ironbar", "qty": 4 },
-        { "item": "rubber", "qty": 2 },
-        { "item": "screw", "qty": 10 }
+        { "item": "ironbar", "qty": 1},
+        { "item": "rubber", "qty": 5}
+      ]
+    },
+        {
+      "id": "sprayxd",
+      "recipe": [
+        { "item": "emptybottles", "qty": 1}
+      ]
+    },
+        {
+      "id": "sprayxd2",
+      "recipe": [
+        { "item": "emptybottles", "qty": 1}
+      ]
+    },
+        {
+      "id": "sprayxd3",
+      "recipe": [
+        { "item": "emptybottles", "qty": 1}
+      ]
+    },
+        {
+      "id": "sprayxd4",
+      "recipe": [
+        { "item": "emptybottles", "qty": 1}
       ]
     }
   ]
