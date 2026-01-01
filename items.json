@@ -1,29 +1,17 @@
-[
-  {
-    "id": 1,
-    "name": "Espada de Fogo",
-    "image": "https://placehold.co/100/orange/white?text=Espada",
-    "recipe": [
-      { "name": "Barra de Ferro", "qty": 2, "image": "https://placehold.co/50/grey/white?text=Ferro" },
-      { "name": "Pó de Chama", "qty": 1, "image": "https://placehold.co/50/red/white?text=Po" }
-    ]
+{
+  "database": {
+    "ferro": { "name": "Barra de Ferro", "image": "link_da_foto_ferro.png" },
+    "fogo": { "name": "Pó de Chama", "image": "link_da_foto_fogo.png" },
+    "madeira": { "name": "Madeira", "image": "link_da_foto_madeira.png" },
+    "espada_fogo": { "name": "Espada de Fogo", "image": "link_da_foto_espada.png" }
   },
-  {
-    "id": 2,
-    "name": "Poção de Cura",
-    "image": "https://placehold.co/100/red/white?text=Pocao",
-    "recipe": [
-      { "name": "Frasco de Vidro", "qty": 1, "image": "https://placehold.co/50/white/black?text=Vidro" },
-      { "name": "Erva Medicinal", "qty": 3, "image": "https://placehold.co/50/green/white?text=Erva" }
-    ]
-  },
-  {
-    "id": 3,
-    "name": "Escudo Mágico",
-    "image": "https://placehold.co/100/blue/white?text=Escudo",
-    "recipe": [
-      { "name": "Madeira", "qty": 4, "image": "https://placehold.co/50/brown/white?text=Madeira" },
-      { "name": "Cristal Azul", "qty": 1, "image": "https://placehold.co/50/blue/white?text=Cristal" }
-    ]
-  }
-]
+  "craftables": [
+    {
+      "id": "espada_fogo",
+      "recipe": [
+        { "item": "ferro", "qty": 2 },
+        { "item": "fogo", "qty": 1 }
+      ]
+    }
+  ]
+}
