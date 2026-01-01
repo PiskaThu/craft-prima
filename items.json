@@ -27,7 +27,8 @@
     "sprayxd4": { "name": "Spray Fosco", "image": "https://i.postimg.cc/yJPhXfC1/sprayxd.png" },
     "trapo": { "name": "Trapo", "image": "https://i.postimg.cc/1gH0cW15/trapo.png" },
     "xenonrgb": { "name": "Xênon", "image": "https://i.postimg.cc/bG8Ht7M1/xenonrgb.png" },
-    "LED": { "name": "LED", "image": "https://i.postimg.cc/q7G9mpBH/led.png" }
+    "LED": { "name": "LED", "image": "https://i.postimg.cc/q7G9mpBH/led.png" },
+    "techtrash": { "name": "Lixo Eletrônico", "image": "https://i.postimg.cc/zv3QxW3f/techtrash.png" }
   },
   "craftables": [
     {
@@ -135,6 +136,47 @@
       "resultQty": 1,
       "recipe": [
         { "item": "emptybottles", "qty": 1}
+      ]
+    },
+        {
+      "id": "screen",
+      "category": "secondary",
+      "resultQty": 1,
+      "recipe": [
+        { "item": "glass", "qty": 3},
+        { "item": "techtrash", "qty": 5},
+        { "item": "battery", "qty": 1},
+        { "item": "rubber", "qty": 3}
+      ]
+    },
+        {
+      "id": "chipprocess",
+      "category": "secondary",
+      "resultQty": 1,
+      "recipe": [
+        { "item": "plastic", "qty": 1},
+        { "item": "techtrash", "qty": 2},
+        { "item": "battery", "qty": 1},
+        { "item": "rubber", "qty": 3}
+      ]
+    },
+        {
+      "id": "hd",
+      "category": "secondary",
+      "resultQty": 1,
+      "recipe": [
+        { "item": "aluminum", "qty": 5},
+        { "item": "rubber", "qty": 3},
+        { "item": "plastic", "qty": 3}
+      ]
+    },
+        {
+      "id": "hackdevice",
+      "category": "secondary",
+      "resultQty": 1,
+      "recipe": [
+        { "item": "rubber", "qty": 3},
+        { "item": "techtrash", "qty": 10}
       ]
     }
   ]
