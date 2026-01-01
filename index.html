@@ -3,27 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Crafting</title>
+    <title>Painel de Crafting - Prisma</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <div id="main-page" class="container">
-        <h1>Wiki de Crafting</h1>
+    <div id="main-page">
+        <h1>Sistema de Crafting</h1>
         <div id="items-grid" class="grid"></div>
     </div>
 
-    <div id="craft-page" class="container hidden">
-        <button id="back-btn">← Voltar</button>
-        
+    <div id="craft-page" class="hidden">
+        <button id="back-btn">← VOLTAR</button>
         <div class="crafting-area">
-            <h2>Craftando...</h2>
-            
             <div id="ingredients-stage" class="ingredients-stage"></div>
-            
             <div id="result-stage" class="result-stage hidden">
                 <img id="final-img" src="" alt="">
-                <h3 id="final-name"></h3>
+                <h3 id="final-name" style="color: #00ff9d; margin-top: 20px;"></h3>
             </div>
         </div>
     </div>
